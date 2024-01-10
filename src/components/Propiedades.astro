@@ -1,0 +1,47 @@
+---
+import { contentfulClient } from "../lib/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import type { EntryFieldTypes } from "contentful";
+
+interface Property {
+  contentTypeId: "property";
+  fields: {
+    id: EntryFieldTypes.Number;
+    localization: EntryFieldTypes.Location;
+    precio: EntryFieldTypes.Number;
+    photos: EntryFieldTypes.Object;
+    title: EntryFieldTypes.Text;
+  };
+}
+
+interface Photo {
+  photo: {
+    fields: {
+      file: {
+        url: string;
+      };
+    };
+  };
+}
+
+const entries = await contentfulClient.getEntries<Property>({
+  content_type: "property",
+});
+
+const properties = entries.items.map((entry) => entry.fields);
+---
+
+<body>
+  {
+    properties.map((item, index) => (
+      <section>
+        <h2>{item.title}</h2>
+        <span>{item.precio}</span>
+        {item.photos &&
+          item.photos.map(({ photo }: Photo) => (
+            <img src={`https:${photo.fields.file.url}`} alt="" />
+          ))}
+      </section>
+    ))
+  }
+</body>
