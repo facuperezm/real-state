@@ -28,20 +28,20 @@ const entries = await contentfulClient.getEntries<Property>({
   content_type: "property",
 });
 
+// {item.photos.map((photo) => (
+//           <img src={`https:${photo.fields.file.url}`} alt="" />
+//         ))}
+
 const properties = entries.items.map((entry) => entry.fields);
 ---
 
-<body>
+<div>
   {
-    properties.map((item, index) => (
+    properties.map((item) => (
       <section>
         <h2>{item.title}</h2>
         <span>{item.precio}</span>
-        {item.photos &&
-          item.photos.map(({ photo }: Photo) => (
-            <img src={`https:${photo.fields.file.url}`} alt="" />
-          ))}
       </section>
     ))
   }
-</body>
+</div>
