@@ -2,6 +2,10 @@
 import { contentfulClient } from "../lib/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import type { EntryFieldTypes } from "contentful";
+import CarouselDemo from "./carousel-demo";
+import Ruler from "./icons/Ruler.astro";
+import Bed from "./icons/Bed.astro";
+import Bath from "./icons/Bath.astro";
 
 interface Property {
   contentTypeId: "property";
@@ -35,13 +39,19 @@ const entries = await contentfulClient.getEntries<Property>({
 const properties = entries.items.map((entry) => entry.fields);
 ---
 
-<div>
-  {
-    properties.map((item) => (
-      <section>
-        <h2>{item.title}</h2>
-        <span>{item.precio}</span>
-      </section>
-    ))
-  }
+<div class="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2">
+  <section class="p-3 space-y-1">
+    <CarouselDemo client:load />
+    <h2 class="line-clamp-3 mb-1">
+      Departamento a la venta en zona céntrica de la ciudad a metros de la plaza
+      central
+    </h2>
+    <h3 class="text-black/50">Victoria Aguirre 450</h3>
+    <div class="flex flex-row text-black/50 gap-2">
+      <span class="flex items-center gap-1"><Bed />2</span>
+      <span class="flex items-center gap-1"><Bath />1</span>
+      <span class="flex items-center gap-1"><Ruler />45 m²</span>
+    </div>
+    <span class="font-medium">USD 450.000</span>
+  </section>
 </div>
