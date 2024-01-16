@@ -2,18 +2,34 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export default function CarouselDemo() {
+export default function CarouselDemo({ photos }: { photos: string[] }) {
   return (
-    <Carousel className="w-full max-w-xs">
+    <Carousel>
+      <CarouselPrevious
+        variant="ghost"
+        className="absolute top-1/2 left-2 z-10"
+        size="icon"
+      />
       <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
+        {photos.map((photo, index) => (
           <CarouselItem key={index}>
-            <img src="/images/local.jpeg" alt="" />
+            <img
+              src={photo}
+              alt="property images"
+              className="size-full object-cover aspect-square"
+            />
           </CarouselItem>
         ))}
       </CarouselContent>
+      <CarouselNext
+        variant="ghost"
+        className="absolute top-1/2 right-2 z-10"
+        size="icon"
+      />
     </Carousel>
   );
 }

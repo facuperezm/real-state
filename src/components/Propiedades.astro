@@ -6,6 +6,7 @@ import CarouselDemo from "./carousel-demo";
 import Ruler from "./icons/Ruler.astro";
 import Bed from "./icons/Bed.astro";
 import Bath from "./icons/Bath.astro";
+import Property from "./Property.astro";
 
 interface Property {
   contentTypeId: "property";
@@ -13,17 +14,16 @@ interface Property {
     id: EntryFieldTypes.Number;
     localization: EntryFieldTypes.Location;
     precio: EntryFieldTypes.Number;
-    photos: EntryFieldTypes.Object;
+    photos: EntryFieldTypes.EntryResourceLink<Photo>[];
     title: EntryFieldTypes.Text;
   };
 }
 
 interface Photo {
-  photo: {
-    fields: {
-      file: {
-        url: string;
-      };
+  contentTypeId: "photo";
+  fields: {
+    file: {
+      url: string;
     };
   };
 }
@@ -32,26 +32,23 @@ const entries = await contentfulClient.getEntries<Property>({
   content_type: "property",
 });
 
-// {item.photos.map((photo) => (
-//           <img src={`https:${photo.fields.file.url}`} alt="" />
-//         ))}
-
 const properties = entries.items.map((entry) => entry.fields);
 ---
 
-<div class="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2">
-  <section class="p-3 space-y-1">
-    <CarouselDemo client:load />
-    <h2 class="line-clamp-3 mb-1">
-      Departamento a la venta en zona céntrica de la ciudad a metros de la plaza
-      central
-    </h2>
-    <h3 class="text-black/50">Victoria Aguirre 450</h3>
-    <div class="flex flex-row text-black/50 gap-2">
-      <span class="flex items-center gap-1"><Bed />2</span>
-      <span class="flex items-center gap-1"><Bath />1</span>
-      <span class="flex items-center gap-1"><Ruler />45 m²</span>
-    </div>
-    <span class="font-medium">USD 450.000</span>
-  </section>
-</div>
+<article class="mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+  {
+    properties.map((property) => {
+      const photos = property.photos
+        ? (property.photos as Photo[]).map((photo) => photo.fields.file.url)
+        : ([] as Photo[]);
+
+      return (
+        <Property
+          photos={photos}
+          title={property.title}
+          precio={property.precio}
+        />
+      );
+    })
+  }
+</article>

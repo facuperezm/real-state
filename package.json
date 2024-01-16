@@ -22,6 +22,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "contentful": "^10.6.16",
+    "embla-carousel": "8.0.0-rc19",
     "embla-carousel-react": "8.0.0-rc19",
     "lucide-react": "^0.309.0",
     "react": "^18.2.0",

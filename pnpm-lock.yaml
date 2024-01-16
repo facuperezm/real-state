@@ -41,6 +41,9 @@ dependencies:
   contentful:
     specifier: ^10.6.16
     version: 10.6.16
+  embla-carousel:
+    specifier: 8.0.0-rc19
+    version: 8.0.0-rc19
   embla-carousel-react:
     specifier: 8.0.0-rc19
     version: 8.0.0-rc19(react@18.2.0)
