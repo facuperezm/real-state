@@ -30,7 +30,7 @@ const entries = await contentfulClient.getEntries<PropertyType>({
 const properties = entries.items.map((entry) => entry.fields)
 ---
 
-<article class="mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+<article class="mx-auto grid grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-3">
 	{
 		properties.map((property) => {
 			const photos = property.photos
