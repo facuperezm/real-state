@@ -1,54 +1,51 @@
 ---
-import { contentfulClient } from "../lib/contentful";
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import type { EntryFieldTypes } from "contentful";
-import CarouselDemo from "./carousel-demo";
-import Ruler from "./icons/Ruler.astro";
-import Bed from "./icons/Bed.astro";
-import Bath from "./icons/Bath.astro";
-import Property from "./Property.astro";
+import type { EntryFieldTypes } from "contentful"
+import { contentfulClient } from "../lib/contentful"
+import Property from "./Property.astro"
 
-interface Property {
-  contentTypeId: "property";
-  fields: {
-    id: EntryFieldTypes.Number;
-    localization: EntryFieldTypes.Location;
-    precio: EntryFieldTypes.Number;
-    photos: EntryFieldTypes.EntryResourceLink<Photo>[];
-    title: EntryFieldTypes.Text;
-  };
+interface PropertyType {
+	contentTypeId: "property"
+	fields: {
+		id: EntryFieldTypes.Number
+		localization: EntryFieldTypes.Location
+		precio: EntryFieldTypes.Number
+		photos: EntryFieldTypes.EntryResourceLink<Photo>[]
+		title: EntryFieldTypes.Text
+	}
 }
 
 interface Photo {
-  contentTypeId: "photo";
-  fields: {
-    file: {
-      url: string;
-    };
-  };
+	contentTypeId: "photo"
+	fields: {
+		file: {
+			url: string
+		}
+	}
 }
 
-const entries = await contentfulClient.getEntries<Property>({
-  content_type: "property",
-});
+const entries = await contentfulClient.getEntries<PropertyType>({
+	content_type: "property",
+})
 
-const properties = entries.items.map((entry) => entry.fields);
+const properties = entries.items.map((entry) => entry.fields)
 ---
 
 <article class="mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-  {
-    properties.map((property) => {
-      const photos = property.photos
-        ? (property.photos as Photo[]).map((photo) => photo.fields.file.url)
-        : ([] as Photo[]);
+	{
+		properties.map((property) => {
+			const photos = property.photos
+				? (property.photos as Photo[]).map((photo) => photo.fields.file.url)
+				: ([] as Photo[])
 
-      return (
-        <Property
-          photos={photos}
-          title={property.title}
-          precio={property.precio}
-        />
-      );
-    })
-  }
+			return (
+				<Property
+					key={property.id}
+					id={property.id}
+					photos={photos}
+					title={property.title}
+					precio={property.precio}
+				/>
+			)
+		})
+	}
 </article>
