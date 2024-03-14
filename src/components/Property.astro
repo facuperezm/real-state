@@ -5,7 +5,7 @@ import Ruler from "./icons/Ruler.astro"
 import Bed from "./icons/Bed.astro"
 import Bath from "./icons/Bath.astro"
 
-const { photos, title, precio, id } = Astro.props
+const { photos, title, precio, id, habitaciones, m2 } = Astro.props
 ---
 
 <div class="">
@@ -16,9 +16,9 @@ const { photos, title, precio, id } = Astro.props
 		</h2>
 		<h3 class="text-black/50">Victoria Aguirre 450</h3>
 		<div class="flex flex-row gap-2 text-black/50">
-			<span class="flex items-center gap-1"><Bed />2</span>
+			<span class="flex items-center gap-1"><Bed />{habitaciones}</span>
 			<span class="flex items-center gap-1"><Bath />1</span>
-			<span class="flex items-center gap-1"><Ruler />45 m²</span>
+			<span class="flex items-center gap-1"><Ruler />{m2} m²</span>
 		</div>
 		<span class="line-clamp-1 font-medium leading-loose text-black/80"
 			>{

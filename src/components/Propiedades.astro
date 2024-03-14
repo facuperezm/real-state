@@ -11,6 +11,8 @@ interface PropertyType {
 		precio: EntryFieldTypes.Number
 		photos: EntryFieldTypes.EntryResourceLink<Photo>[]
 		title: EntryFieldTypes.Text
+		habitaciones: EntryFieldTypes.Number
+		m2: EntryFieldTypes.Number
 	}
 }
 
@@ -44,6 +46,8 @@ const properties = entries.items.map((entry) => entry.fields)
 					photos={photos}
 					title={property.title}
 					precio={property.precio}
+					habitaciones={property.habitaciones}
+					m2={property.m2}
 				/>
 			)
 		})
