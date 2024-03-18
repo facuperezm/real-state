@@ -1,13 +1,10 @@
 ---
-import { contentfulClient } from "../lib/contentful"
-import type { Photo, PropertyType } from "../lib/types"
+import type { Photo } from "../lib/types"
+import { api } from "../lib/api"
+
 import Property from "./Property.astro"
 
-const entries = await contentfulClient.getEntries<PropertyType>({
-	content_type: "property",
-})
-
-const properties = entries.items.map((entry) => entry.fields)
+const properties = await api.getPropertyList()
 ---
 
 <article class="mx-auto grid max-w-7xl grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-3">
