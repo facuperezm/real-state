@@ -1,0 +1,13 @@
+---
+import { api } from "../../lib/api"
+const { id } = Astro.params
+
+if (!id) {
+	throw new Error("No property ID provided")
+}
+const property = await api.getProperty(id)
+---
+
+<p>
+	This is an individual property. Property name: {property?.fields.title}
+</p>

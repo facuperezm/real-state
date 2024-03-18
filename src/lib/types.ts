@@ -5,10 +5,10 @@ export interface PropertyType {
 	fields: {
 		id: EntryFieldTypes.Number
 		localization: EntryFieldTypes.Location
-		precio: EntryFieldTypes.Number
+		price: EntryFieldTypes.Number
 		photos: EntryFieldTypes.EntryResourceLink<Photo>[]
 		title: EntryFieldTypes.Text
-		habitaciones: EntryFieldTypes.Number
+		rooms: EntryFieldTypes.Number
 		m2: EntryFieldTypes.Number
 	}
 }

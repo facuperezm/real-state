@@ -8,4 +8,10 @@ export const api = {
 		})
 		return entries.items.map((entry) => entry.fields)
 	},
+	getProperty: async (id: string) => {
+		const entries = await contentfulClient.getEntries<PropertyType>({
+			content_type: "property",
+		})
+		return entries.items.find((entry) => entry.fields.id === Number(id))
+	},
 }
