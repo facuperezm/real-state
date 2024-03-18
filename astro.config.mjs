@@ -1,7 +1,8 @@
 import tailwind from "@astrojs/tailwind"
-import vercel from "@astrojs/vercel/serverless"
 import react from "@astrojs/react"
 import { defineConfig } from "astro/config"
+
+import node from "@astrojs/node"
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,13 +13,13 @@ export default defineConfig({
 			experimentalReactChildren: true,
 		}),
 	],
-	adapter: vercel({
-		webAnalytics: { enabled: true },
+	adapter: node({
+		mode: "standalone",
 	}),
 	build: {
 		inlineStylesheets: "always",
 	},
-	output: "hybrid",
+	output: "server",
 	vite: {
 		build: {
 			cssMinify: "lightningcss",

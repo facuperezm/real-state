@@ -10,7 +10,7 @@ const { photos, title, precio, id, habitaciones, m2 } = Astro.props
 
 <div class="">
 	<CarouselDemo photos={photos} client:load />
-	<a href=`/properties/${id}`>
+	<a href=`/property/${id}`>
 		<h2 class="mt-2 line-clamp-1 truncate">
 			{title}
 		</h2>
