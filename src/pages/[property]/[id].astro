@@ -14,7 +14,28 @@ const property = await api.getProperty(id)
 	title={`VendeTuCasa | ${property!.title}`}
 	description="Compra las mejores propiedades de la ciudad al mejor precio de mercado, contactanos por WhatsApp de Lunes a Viernes de 8hs a 17hs"
 >
-	<p>
-		This is an individual property. Property name: {property?.title}
-	</p>
+	<div class="container mx-auto">
+		<div class="-mx-4 flex flex-wrap">
+			<div class="w-full px-4 md:w-1/2">
+				<img
+					src={property!.photos[0].fields.file.url}
+					alt={property!.title}
+					class="h-auto w-full"
+					transition:name={`property-${id}-animation`}
+				/>
+			</div>
+			<div class="w-full px-4 md:w-1/2">
+				<h1 class="mb-4 text-3xl font-bold">{property!.title}</h1>
+				<p class="mb-4 text-2xl font-bold">
+					${property!.price.toLocaleString()}
+				</p>
+				<a
+					href={`https://wa.me/5491165918795?text=Hola, estoy interesado en la propiedad ${property!.title}`}
+					class="rounded bg-blue-500 px-4 py-2 font-bold text-white"
+				>
+					Contactar
+				</a>
+			</div>
+		</div>
+	</div>
 </Layout>

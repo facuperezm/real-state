@@ -15,12 +15,14 @@ const properties = await api.getPropertyList()
 
 			return (
 				<Property
+					class="transition-transform"
+					transition:name="laperinola"
 					key={property.id}
 					id={property.id}
 					photos={photos}
 					title={property.title}
-					precio={property.precio}
-					habitaciones={property.habitaciones}
+					price={property.price}
+					rooms={property.rooms}
 					m2={property.m2}
 				/>
 			)
