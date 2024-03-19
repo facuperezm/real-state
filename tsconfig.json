@@ -5,13 +5,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@lib/*": ["src/lib/*"],
+      "@layouts/*": ["layouts/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
   },
-  "include": ["./src/env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["dist"]
 }

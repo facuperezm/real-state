@@ -1,5 +1,6 @@
 ---
-import { api } from "../../lib/api"
+import Layout from "@/layouts/Layout.astro"
+import { api } from "@/lib/api"
 
 const { id } = Astro.params
 
@@ -9,6 +10,11 @@ if (!id) {
 const property = await api.getProperty(id)
 ---
 
-<p>
-	This is an individual property. Property name: {property?.fields.title}
-</p>
+<Layout
+	title={`VendeTuCasa | ${property!.title}`}
+	description="Compra las mejores propiedades de la ciudad al mejor precio de mercado, contactanos por WhatsApp de Lunes a Viernes de 8hs a 17hs"
+>
+	<p>
+		This is an individual property. Property name: {property?.title}
+	</p>
+</Layout>
