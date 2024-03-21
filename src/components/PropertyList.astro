@@ -6,17 +6,17 @@ import { api } from "@/lib/api"
 const properties = await api.getPropertyList()
 ---
 
-<article class="mx-auto grid max-w-7xl grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-3">
+<article class="mx-auto grid max-w-5xl grid-cols-2 gap-4 p-4 md:grid-cols-3 lg:grid-cols-3">
 	{
-		properties.map((property) => {
+		properties.map((property, index) => {
 			const photos = property.photos
 				? (property.photos as Photo[]).map((photo) => photo.fields.file.url)
 				: ([] as Photo[])
 
 			return (
 				<Property
+					transition:name={`gallery-${index}`}
 					class="transition-transform"
-					transition:name="laperinola"
 					key={property.id}
 					id={property.id}
 					photos={photos}

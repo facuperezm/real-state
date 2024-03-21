@@ -1,41 +1,83 @@
 ---
+import "photoswipe/style.css"
 import Layout from "@/layouts/Layout.astro"
 import { api } from "@/lib/api"
+import type { Photo } from "@/lib/types"
+import Grid from "@/components/icons/Grid.astro"
 
 const { id } = Astro.params
-
 if (!id) {
 	throw new Error("No property ID provided")
 }
 const property = await api.getProperty(id)
+const propertyPhotos = (property as { photos: Photo[] }).photos as Photo[]
+
+while (propertyPhotos.length < 5) {
+	const lastElement = propertyPhotos[propertyPhotos.length - 1]
+	propertyPhotos.push(lastElement)
+}
 ---
 
 <Layout
 	title={`VendeTuCasa | ${property!.title}`}
 	description="Compra las mejores propiedades de la ciudad al mejor precio de mercado, contactanos por WhatsApp de Lunes a Viernes de 8hs a 17hs"
 >
-	<div class="container mx-auto">
-		<div class="-mx-4 flex flex-wrap">
-			<div class="w-full px-4 md:w-1/2">
-				<img
-					src={property!.photos[0].fields.file.url}
-					alt={property!.title}
-					class="h-auto w-full"
-					transition:name={`property-${id}-animation`}
-				/>
+	<section class="mx-auto max-w-5xl px-4">
+		<h1 class="my-4 text-3xl font-medium leading-tight">{property?.title}</h1>
+		<div class="relative overflow-x-hidden rounded-xl">
+			<div class="grid grid-cols-[repeat(4,1fr)] grid-rows-2 gap-2 overflow-hidden" id="gallery">
+				{
+					propertyPhotos.map((propertyImg, index) => {
+						return (
+							<a
+								transition:name={`gallery-${index}`}
+								href={`${propertyImg.fields.file.url}`}
+								data-pswp-width="2500"
+								data-pswp-height="2500"
+								class:list={
+									index === 0
+										? "w- overflow-w-clip col-span-2 row-span-2 grid-flow-row-dense"
+										: index > 4
+											? "hidden "
+											: ""
+								}
+								target="_blank"
+							>
+								<img src={`${propertyImg.fields.file.url}`} alt="" class="h-full" />
+							</a>
+						)
+					})
+				}
 			</div>
-			<div class="w-full px-4 md:w-1/2">
-				<h1 class="mb-4 text-3xl font-bold">{property!.title}</h1>
-				<p class="mb-4 text-2xl font-bold">
-					${property!.price.toLocaleString()}
-				</p>
-				<a
-					href={`https://wa.me/5491165918795?text=Hola, estoy interesado en la propiedad ${property!.title}`}
-					class="rounded bg-blue-500 px-4 py-2 font-bold text-white"
-				>
-					Contactar
-				</a>
+			<div
+				class="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-[0.5rem] border border-black bg-white px-4 py-2 text-sm font-medium"
+			>
+				<Grid class="size-[1.2rem]" />Ver más fotos
 			</div>
 		</div>
-	</div>
+		<!-- <div class="px-4 md:w-1/2">
+			<h1 class="mb-4 text-3xl font-bold">{property!.title}</h1>
+			<p class="mb-4 text-2xl font-bold">
+				${property!.price.toLocaleString()}
+			</p>
+			<a
+				href={`https://wa.me/5491165918795?text=Hola, estoy interesado en la propiedad ${property!.title}`}
+				class="rounded bg-blue-500 px-4 py-2 font-bold text-white"
+			>
+				Contactar
+			</a>
+		</div> -->
+	</section>
 </Layout>
+
+<script>
+	import PhotoSwipeLightbox from "photoswipe/lightbox"
+
+	const lightbox = new PhotoSwipeLightbox({
+		gallery: "#gallery",
+		children: "a",
+		pswpModule: () => import("photoswipe"),
+	})
+
+	lightbox.init()
+</script>

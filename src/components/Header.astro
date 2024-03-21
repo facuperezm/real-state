@@ -4,9 +4,11 @@ import Logo from "@/components/icons/Logo.astro"
 import Ventas from "@/components/icons/Ventas.astro"
 ---
 
-<header class="mx-auto flex max-w-7xl flex-row justify-between p-4">
+<header class="mx-auto flex max-w-5xl flex-row justify-between p-4">
 	<!-- <img alt="" src="../images/logo.png" class="w-16" /> -->
-	<Logo class="size-14" />
+	<a href="/">
+		<Logo class="size-14 pl-2" />
+	</a>
 	<ul class="m-auto flex flex-row gap-4">
 		<li
 			class="flex flex-col items-center justify-center text-xs font-medium text-black/60 hover:text-black"
@@ -23,3 +25,4 @@ import Ventas from "@/components/icons/Ventas.astro"
 		<!-- <li class="hover:bg-slate-200"><World /></li> -->
 	</ul>
 </header>
+<hr class="w-full" />
