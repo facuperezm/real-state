@@ -19,9 +19,9 @@ const { title, description } = Astro.props
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="robots" content="nofollow, noindex" />
-		<ViewTransitions />
 		<title>{title}</title>
 		<slot name="preload" />
+		<ViewTransitions />
 	</head>
 	<body>
 		<Header />

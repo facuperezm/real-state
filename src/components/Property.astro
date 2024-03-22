@@ -9,8 +9,8 @@ const { photos, title, price, id, rooms, m2 } = Astro.props
 ---
 
 <div>
-	<CarouselDemo photos={photos} client:load transition:name="laperinola" transition:persist />
-	<a href=`/property/${id}` transition:name={`property-${id}-animation`}>
+	<CarouselDemo photos={photos} client:load />
+	<a href=`/property/${id}`>
 		<h2 class="mt-2 line-clamp-1 truncate">
 			{title}
 		</h2>

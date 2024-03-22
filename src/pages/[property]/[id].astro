@@ -13,7 +13,7 @@ const property = await api.getProperty(id)
 const propertyPhotos = (property as { photos: Photo[] }).photos as Photo[]
 
 while (propertyPhotos.length < 5) {
-	const lastElement = propertyPhotos[propertyPhotos.length - 1]
+	const lastElement = propertyPhotos[propertyPhotos.length - 2]
 	propertyPhotos.push(lastElement)
 }
 ---
@@ -22,15 +22,16 @@ while (propertyPhotos.length < 5) {
 	title={`VendeTuCasa | ${property!.title}`}
 	description="Compra las mejores propiedades de la ciudad al mejor precio de mercado, contactanos por WhatsApp de Lunes a Viernes de 8hs a 17hs"
 >
-	<section class="mx-auto max-w-5xl px-4">
-		<h1 class="my-4 text-3xl font-medium leading-tight">{property?.title}</h1>
+	<section  class="mx-auto max-w-5xl px-4">
+		<h1 class="my-4 text-3xl font-medium leading-tight">
+			{property?.title}
+		</h1>
 		<div class="relative overflow-x-hidden rounded-xl">
-			<div class="grid grid-cols-[repeat(4,1fr)] grid-rows-2 gap-2 overflow-hidden" id="gallery">
+			<div  class="grid grid-cols-[repeat(4,minmax(0,1fr))] gap-2 overflow-hidden" id="gallery">
 				{
 					propertyPhotos.map((propertyImg, index) => {
 						return (
 							<a
-								transition:name={`gallery-${index}`}
 								href={`${propertyImg.fields.file.url}`}
 								data-pswp-width="2500"
 								data-pswp-height="2500"

@@ -15,8 +15,6 @@ const properties = await api.getPropertyList()
 
 			return (
 				<Property
-					transition:name={`gallery-${index}`}
-					class="transition-transform"
 					key={property.id}
 					id={property.id}
 					photos={photos}
