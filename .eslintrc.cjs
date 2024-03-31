@@ -25,6 +25,8 @@ module.exports = {
 		"no-constant-binary-expression": "warn",
 		"no-debugger": "warn",
 		"no-extend-native": "off",
+		"@typescript-eslint/no-unsafe-assignment": "off",
+		"@typescript-eslint/no-unsafe-call": "off",
 		"no-trailing-spaces": "warn",
 		"space-before-function-paren": "off",
 		"antfu/if-newline": "off",

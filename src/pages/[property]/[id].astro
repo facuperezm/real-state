@@ -4,6 +4,7 @@ import Layout from "@/layouts/Layout.astro"
 import { api } from "@/lib/api"
 import type { Photo } from "@/lib/types"
 import Grid from "@/components/icons/Grid.astro"
+import Map from "@/components/map"
 
 const { id } = Astro.params
 if (!id) {
@@ -27,7 +28,7 @@ while (propertyPhotos.length < 5) {
 			{property?.title}
 		</h1>
 		<div class="relative max-h-full overflow-x-hidden rounded-xl">
-			<div class="grid grid-cols-4 grid-rows-2 gap-2 overflow-hidden" id="gallery">
+			<div class="grid h-full grid-cols-4 grid-rows-2 gap-2 overflow-hidden" id="gallery">
 				{
 					propertyPhotos.map((propertyImg, index) => {
 						return (
@@ -44,7 +45,7 @@ while (propertyPhotos.length < 5) {
 								}
 								target="_blank"
 							>
-								<img src={`${propertyImg.fields.file.url}`} alt="" class="" />
+								<img src={`${propertyImg.fields.file.url}`} alt="" class="md:h-full" />
 							</a>
 						)
 					})
@@ -56,7 +57,9 @@ while (propertyPhotos.length < 5) {
 				<Grid class="size-[1.2rem]" />Ver más fotos
 			</div>
 		</div>
-		<div class="mt-10 flex rounded-[10px] border p-4 shadow-lg"></div>
+		<div class="mt-10 flex rounded-[10px] border p-4 shadow-lg">
+			<Map location={property?.localization} client:load />
+		</div>
 	</section>
 </Layout>
 
@@ -71,4 +74,3 @@ while (propertyPhotos.length < 5) {
 
 	lightbox.init()
 </script>
-``
