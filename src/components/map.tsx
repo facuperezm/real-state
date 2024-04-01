@@ -11,6 +11,7 @@ export default function Map({ location }: { location: { lat: number; lon: number
 		width: "100%",
 		height: "400px",
 		borderRadius: "6px",
+		boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
 	}
 
 	const marker =

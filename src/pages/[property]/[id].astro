@@ -54,23 +54,27 @@ while (propertyPhotos.length < 5) {
 			<div
 				class="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-[0.5rem] border border-black bg-white px-4 py-2 text-sm font-medium"
 			>
-				<Grid class="size-[1.2rem]" />Ver más fotos
+				<Grid class="size-[1.2rem]" /> Ver más fotos
 			</div>
 		</div>
-		<div class="mt-10 flex rounded-[10px] border p-4 shadow-lg">
-			<Map location={property?.localization} client:load />
-		</div>
+		<hr class="my-10" />
+		<article>
+			<article class="shad mt-10 flex flex-col gap-4 rounded-[10px] md:flex-row">
+				<p class="mt-2 flex-grow">{property?.description}</p>
+				<Map location={property?.localization} client:load />
+			</article>
+		</article>
+
+		<script>
+			import PhotoSwipeLightbox from "photoswipe/lightbox"
+
+			const lightbox = new PhotoSwipeLightbox({
+				gallery: "#gallery",
+				children: "a",
+				pswpModule: () => import("photoswipe"),
+			})
+
+			lightbox.init()
+		</script>
 	</section>
 </Layout>
-
-<script>
-	import PhotoSwipeLightbox from "photoswipe/lightbox"
-
-	const lightbox = new PhotoSwipeLightbox({
-		gallery: "#gallery",
-		children: "a",
-		pswpModule: () => import("photoswipe"),
-	})
-
-	lightbox.init()
-</script>

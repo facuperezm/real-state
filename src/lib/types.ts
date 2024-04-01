@@ -8,6 +8,7 @@ export interface PropertyType {
 		price: EntryFieldTypes.Number
 		photos: EntryFieldTypes.EntryResourceLink<Photo>[]
 		title: EntryFieldTypes.Text
+		description: EntryFieldTypes.Text
 		rooms: EntryFieldTypes.Number
 		m2: EntryFieldTypes.Number
 	}
