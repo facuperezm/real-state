@@ -4,7 +4,7 @@ export default function Map({ location }: { location: { lat: number; lon: number
 	const igr = { lat: -25.618745, lng: -54.57684 }
 
 	const { isLoaded } = useLoadScript({
-		googleMapsApiKey: import.meta.env.GOOGLE_MAPS_API_KEY,
+		googleMapsApiKey: import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY,
 	})
 
 	const containerStyle = {
