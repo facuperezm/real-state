@@ -3,7 +3,6 @@ import "photoswipe/style.css"
 import Layout from "@/layouts/Layout.astro"
 import { api } from "@/lib/api"
 import type { Photo } from "@/lib/types"
-import Grid from "@/components/icons/Grid.astro"
 import Map from "@/components/map"
 
 const { id } = Astro.params
@@ -45,26 +44,28 @@ while (propertyPhotos.length < 5) {
 								}
 								target="_blank"
 							>
-								<img src={`${propertyImg.fields.file.url}`} alt="" class="md:h-full" />
+								<img src={`${propertyImg.fields.file.url}`} alt="" class="h-full object-cover" />
 							</a>
 						)
 					})
 				}
 			</div>
-			<div
+			<!-- <div
 				class="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-[0.5rem] border border-black bg-white px-4 py-2 text-sm font-medium"
 			>
 				<Grid class="size-[1.2rem]" /> Ver más fotos
-			</div>
+			</div> -->
 		</div>
 		<hr class="my-10" />
-		<article>
-			<article class="shad mt-10 flex flex-col gap-4 rounded-[10px] md:flex-row">
-				<p class="mt-2 flex-grow">{property?.description}</p>
-				<Map location={property?.localization} client:load />
-			</article>
+		<article class="flex flex-col gap-6">
+			<h2 class="text-2xl font-medium">Descripción</h2>
+			<p class="mt-2 flex-grow">{property?.description}</p>
 		</article>
-
+		<hr class="my-10" />
+		<section class="flex flex-col gap-6">
+			<h2 class="text-2xl font-medium">Ubicación</h2>
+			<Map location={property?.localization} client:load />
+		</section>
 		<script>
 			import PhotoSwipeLightbox from "photoswipe/lightbox"
 
