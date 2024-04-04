@@ -26,27 +26,16 @@ while (propertyPhotos.length < 5) {
 		<h1 class="my-4 text-3xl font-medium leading-tight">
 			{property?.title}
 		</h1>
-		<div>
-			<div
-				class="-mx-4 grid h-full grid-cols-[repeat(auto-fit,minmax(150px,1fr))] overflow-hidden md:hidden"
-				id="gallery"
-			>
+		<section class="-mx-4">
+			<div class="flex max-w-full gap-4 overflow-auto md:hidden">
 				{
 					propertyPhotos.map((propertyImg) => {
-						return (
-							<a
-								href={`${propertyImg.fields.file.url}`}
-								data-pswp-width="2500"
-								data-pswp-height="1500"
-								target="_blank"
-							>
-								<img src={`${propertyImg.fields.file.url}`} alt="" class="w-full" />
-							</a>
-						)
+						return <img src={`${propertyImg.fields.file.url}`} alt="" class="h-[250px]" />
 					})
 				}
 			</div>
-		</div>
+		</section>
+
 		<div class="relative hidden max-h-full overflow-x-hidden rounded-xl md:block">
 			<div class="grid h-full grid-cols-4 grid-rows-2 gap-2 overflow-hidden" id="gallery">
 				{
