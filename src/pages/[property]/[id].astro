@@ -26,25 +26,44 @@ while (propertyPhotos.length < 5) {
 		<h1 class="my-4 text-3xl font-medium leading-tight">
 			{property?.title}
 		</h1>
-		<div class="relative max-h-full overflow-x-hidden rounded-xl">
+		<div>
+			<div
+				class="-mx-4 grid h-full grid-cols-[repeat(auto-fit,minmax(150px,1fr))] overflow-hidden md:hidden"
+				id="gallery"
+			>
+				{
+					propertyPhotos.map((propertyImg) => {
+						return (
+							<a
+								href={`${propertyImg.fields.file.url}`}
+								data-pswp-width="2500"
+								data-pswp-height="1500"
+								target="_blank"
+							>
+								<img src={`${propertyImg.fields.file.url}`} alt="" class="w-full" />
+							</a>
+						)
+					})
+				}
+			</div>
+		</div>
+		<div class="relative hidden max-h-full overflow-x-hidden rounded-xl md:block">
 			<div class="grid h-full grid-cols-4 grid-rows-2 gap-2 overflow-hidden" id="gallery">
 				{
 					propertyPhotos.map((propertyImg, index) => {
 						return (
 							<a
 								href={`${propertyImg.fields.file.url}`}
-								data-pswp-width="2500"
-								data-pswp-height="2500"
 								class:list={
 									index === 0
 										? "w- overflow-w-clip col-span-2 row-span-2 grid-flow-row-dense"
 										: index > 4
-											? "hidden "
+											? "hidden"
 											: ""
 								}
 								target="_blank"
 							>
-								<img src={`${propertyImg.fields.file.url}`} alt="" class="h-full object-cover" />
+								<img src={`${propertyImg.fields.file.url}`} alt="" class="w-full object-cover" />
 							</a>
 						)
 					})
