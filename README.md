@@ -20,18 +20,13 @@ Inmobiliaria is an app for a real state agency built with Contenful, giving grea
 - [**Astro**](https://astro.build/) - The modern static site builder that ships minimal JavaScript.
 - [**Tailwind CSS**](https://tailwindcss.com/) - A utility-first CSS framework for rapidly building custom designs.
 - [**Shadcn/ui**](https://ui.shadcn.com/) - A collection of UI components for React.
-- [**Contenful**](https://www.contentful.com/) - A content platform to build digital experiences at scale.
+- [**Contentful**](https://www.contentful.com/) - A content platform to build digital experiences at scale.
 
 **Deploy:** Vercel
 
 ## Optimizations & features
 
-- []
-- []
-- []
-- []
-- []
-- []
+- [] Fix the clickable area in components for the main page. Users should be able to click on an image and go to individual page
 
 ## Author
 
