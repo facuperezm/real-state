@@ -4,7 +4,7 @@
  Inmobiliaria App
 </h3>
 <p>
-Inmobiliaria is an app for a real state agency built with Contenful, giving great flexibility to the customer to handle the app and the information. The app is built with Astro, Shadcn/ui, Tailwind CSS and Contenful.
+Inmobiliaria is an app for a real state agency built with Contentful, giving great flexibility to the customer to handle the app and the information. The app is built with Astro, Shadcn/ui, Tailwind CSS and Contenful.
 </p>
 
 <span>&nbsp;✦&nbsp;</span>
