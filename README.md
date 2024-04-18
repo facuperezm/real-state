@@ -26,7 +26,7 @@ Inmobiliaria is an app for a real state agency built with Contentful, giving gre
 
 ## Optimizations & features
 
-- [] Fix the clickable area in components for the main page. Users should be able to click on an image and go to individual page
+- [ ] Fix the clickable area in components for the main page. Users should be able to click on an image and go to individual page
 
 ## Author
 
