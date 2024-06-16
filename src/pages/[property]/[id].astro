@@ -39,22 +39,16 @@ while (propertyPhotos.length < 5) {
 		</section>
 
 		<div class="relative hidden max-h-full overflow-x-hidden rounded-xl md:block">
-			<div class="grid h-full grid-cols-4 grid-rows-2 gap-2 overflow-hidden" id="gallery">
+			<div class="grid h-full grid-cols-3 grid-rows-2 gap-2 overflow-hidden" id="gallery">
 				{
 					propertyPhotos.map((propertyImg, index) => {
 						return (
 							<a
 								href={`${propertyImg.fields.file.url}`}
-								class:list={
-									index === 0
-										? "w- overflow-w-clip col-span-2 row-span-2 grid-flow-row-dense"
-										: index > 4
-											? "hidden"
-											: ""
-								}
+								class:list={index === 0 ? "row-span-2 object-cover" : index > 4 ? "hidden" : ""}
 								target="_blank"
 							>
-								<img src={`${propertyImg.fields.file.url}`} alt="" class="w-full object-cover" />
+								<img src={`${propertyImg.fields.file.url}`} alt="" class="size-full object-cover" />
 							</a>
 						)
 					})
