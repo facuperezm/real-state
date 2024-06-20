@@ -11,7 +11,7 @@ Inmobiliaria is an app for a real state agency built with Contentful, giving gre
 <a href="https://inmobiliaria.facupm.dev">Live website</a>
 <span>&nbsp;✦&nbsp;</span>
 
-![App Screenshot](./public/screenshot.png)
+![App Screenshot](./public/screenshots.png)
 
 </div>
 
