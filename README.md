@@ -1,10 +1,10 @@
 <div align="center">
     <img src="public/favicon.ico" height="50px" width="auto" /> 
 <h3>
- Inmobiliaria App
+ Real state App
 </h3>
 <p>
-Inmobiliaria is an app for a real state agency built with Contentful, giving great flexibility to the customer to handle the app and the information. The app is built with Astro, Shadcn/ui, Tailwind CSS and Contenful.
+This is an app for a real state agency built with Astro powered by Contentful, giving great flexibility to the customer to handle the app and the information.
 </p>
 
 <span>&nbsp;✦&nbsp;</span>
