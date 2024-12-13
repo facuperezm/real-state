@@ -1,36 +1,69 @@
-<div align="center">
-    <img src="public/favicon.ico" height="50px" width="auto" /> 
-<h3>
- Real state App
-</h3>
-<p>
-This is an app for a real state agency built with Astro powered by Contentful, giving great flexibility to the customer to handle the app and the information.
-</p>
+# Real Estate App
 
-<span>&nbsp;✦&nbsp;</span>
-<a href="https://inmobiliaria.facupm.dev">Live website</a>
-<span>&nbsp;✦&nbsp;</span>
+A modern real estate platform built with Astro and Contentful, designed to provide a seamless experience for property browsing.
+
+[![Live Website](https://img.shields.io/badge/▶️-Live_Website-blue?style=for-the-badge)](https://inmobiliaria.facupm.dev)
 
 ![App Screenshot](./public/screenshots.png)
 
-</div>
+## 🚀 Quick Start
 
-## 🛠️ Stack
+```bash
+# Install dependencies
+pnpm install
 
-- [**Astro**](https://astro.build/) - The modern static site builder that ships minimal JavaScript.
-- [**Tailwind CSS**](https://tailwindcss.com/) - A utility-first CSS framework for rapidly building custom designs.
-- [**Shadcn/ui**](https://ui.shadcn.com/) - A collection of UI components for React.
-- [**Contentful**](https://www.contentful.com/) - A content platform to build digital experiences at scale.
+# Set up environment variables
+cp .env.example .env
 
-**Deploy:** Vercel
+# Run development server
+pnpm dev
+```
 
-## Optimizations & features
+## 🛠️ Tech Stack
 
-- [ ] Fix the clickable area in components for the main page. Users should be able to click on an image and go to individual page
+- **Framework:** [Astro](https://astro.build/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components:** [Shadcn/ui](https://ui.shadcn.com/)
+- **CMS:** [Contentful](https://www.contentful.com/)
+- **Deployment:** Vercel
 
-## Author
+## 🔑 Environment Variables
 
-- [Facundo Perez Montalvo](https://facuperezm.vercel.app)
+```bash
+CONTENTFUL_SPACE_ID=your_space_id
+CONTENTFUL_ACCESS_TOKEN=your_access_token
+```
+
+## 📦 Features
+
+- Responsive design
+- Fast page loads
+- SEO optimized
+- Content management with Contentful
+- Modern UI components
+
+## 🔨 Development
+
+```bash
+# Run development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
+```
+
+## 📝 To Do
+
+- [ ] Fix clickable area in main page components
+- [ ] Add property search functionality
+- [ ] Implement contact forms
+
+## 👤 Author
+
+Built with ❤️ by [Facundo Perez Montalvo](https://facuperezm.vercel.app)
 
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://facuperezm.vercel.app/)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/facuperezm/)
