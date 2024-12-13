@@ -9,20 +9,22 @@ import Ventas from "@/components/icons/Ventas.astro"
 	<a href="/">
 		<Logo class="size-14 pl-2" />
 	</a>
-	<ul class="ml-auto flex flex-row gap-4">
-		<li
-			class="flex flex-col items-center justify-center text-xs font-medium text-black/60 hover:text-black"
-		>
-			<Alquileres class="mb-2 text-black/60 hover:text-black" />
-			Alquileres
-		</li>
-		<li
-			class="flex flex-col items-center justify-center text-xs font-medium text-black/60 hover:text-black"
-		>
-			<Ventas class="mb-2 text-black/60 hover:text-black" />
-			Ventas
-		</li>
-		<!-- <li class="hover:bg-slate-200"><World /></li> -->
-	</ul>
+	<nav aria-label="Main navigation">
+		<ul class="ml-auto flex flex-row gap-4">
+			<li
+				class="flex flex-col items-center justify-center text-xs font-medium text-black/60 hover:text-black"
+			>
+				<Alquileres class="mb-2 text-black/60 hover:text-black" />
+				Alquileres
+			</li>
+			<li
+				class="flex flex-col items-center justify-center text-xs font-medium text-black/60 hover:text-black"
+			>
+				<Ventas class="mb-2 text-black/60 hover:text-black" />
+				Ventas
+			</li>
+			<!-- <li class="hover:bg-slate-200"><World /></li> -->
+		</ul>
+	</nav>
 </header>
 <hr class="w-full" />

@@ -28,12 +28,18 @@ while (propertyPhotos.length < 5) {
 		</h1>
 		<section class="-mx-4">
 			<div class="flex max-w-full snap-x gap-4 overflow-auto md:hidden">
+				<img
+					src={`${propertyPhotos[0].fields.file.url}`}
+					alt=""
+					class="h-[250px] snap-start"
+					transition:name={`property-image-${id}`}
+				/>
 				{
-					propertyPhotos.map((propertyImg) => {
-						return (
+					propertyPhotos
+						.slice(1)
+						.map((propertyImg) => (
 							<img src={`${propertyImg.fields.file.url}`} alt="" class="h-[250px] snap-start" />
-						)
-					})
+						))
 				}
 			</div>
 		</section>
@@ -48,17 +54,17 @@ while (propertyPhotos.length < 5) {
 								class:list={index === 0 ? "row-span-2 object-cover" : index > 4 ? "hidden" : ""}
 								target="_blank"
 							>
-								<img src={`${propertyImg.fields.file.url}`} alt="" class="size-full object-cover" />
+								<img
+									src={`${propertyImg.fields.file.url}`}
+									alt=""
+									class="size-full object-cover"
+									transition:name={index === 0 ? `property-image-${id}` : undefined}
+								/>
 							</a>
 						)
 					})
 				}
 			</div>
-			<!-- <div
-				class="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-[0.5rem] border border-black bg-white px-4 py-2 text-sm font-medium"
-			>
-				<Grid class="size-[1.2rem]" /> Ver más fotos
-			</div> -->
 		</div>
 		<hr class="my-10" />
 		<article class="flex flex-col gap-6">

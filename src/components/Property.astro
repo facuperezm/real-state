@@ -1,6 +1,5 @@
 ---
 import CarouselDemo from "@/components/carousel-demo"
-
 import Ruler from "@/components/icons/Ruler.astro"
 import Bed from "@/components/icons/Bed.astro"
 import Bath from "@/components/icons/Bath.astro"
@@ -8,13 +7,20 @@ import Bath from "@/components/icons/Bath.astro"
 const { photos, title, price, id, rooms, m2 } = Astro.props
 ---
 
-<div>
-	<CarouselDemo photos={photos} client:load />
-	<a href=`/property/${id}`>
+<article class="group cursor-pointer">
+	<div transition:name={`property-image-${id}`} class="relative">
+		<CarouselDemo photos={photos} client:load />
+		<a
+			href=`/property/${id}`
+			class="absolute inset-0 z-[1]"
+			aria-label={`Ver detalles de ${title}`}
+			onclick="const isButton = event.target.closest('button'); if (isButton) event.preventDefault();"
+		></a>
+	</div>
+	<a href=`/property/${id}` class="block">
 		<h2 class="mt-2 line-clamp-1">
 			{title}
 		</h2>
-		<!-- <h3 class="text-black/50">Victoria Aguirre 450</h3> -->
 		<div class="flex flex-row gap-2 text-black/50">
 			<span class="flex items-center gap-1"><Bed />{rooms}</span>
 			<span class="flex items-center gap-1"><Bath />1</span>
@@ -28,4 +34,4 @@ const { photos, title, price, id, rooms, m2 } = Astro.props
 			}</span
 		>
 	</a>
-</div>
+</article>

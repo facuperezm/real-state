@@ -1,7 +1,7 @@
 ---
+import { api } from "@/lib/api"
 import Property from "@/components/Property.astro"
 import type { Photo } from "@/lib/types"
-import { api } from "@/lib/api"
 
 const properties = await api.getPropertyList()
 ---

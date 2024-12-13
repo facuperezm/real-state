@@ -21,7 +21,6 @@ export default function CarouselDemo({ photos }: { photos: string[] }) {
 					</CarouselItem>
 				))}
 			</CarouselContent>
-
 			<CarouselNext variant="ghost" className="absolute right-2 top-1/2 z-10" size="icon" />
 		</Carousel>
 	)

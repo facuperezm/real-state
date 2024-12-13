@@ -19,14 +19,16 @@ const { title, description } = Astro.props
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<meta name="robots" content="nofollow, noindex" />
-		<title>{title}</title>
+		<title transition:animate="slide">{title}</title>
 		<slot name="preload" />
 		<ViewTransitions />
 	</head>
 	<body>
-		<Header />
-		<slot />
-		<Footer />
+		<Header transition:persist />
+		<main transition:animate="fade">
+			<slot />
+		</main>
+		<Footer transition:persist />
 		<style is:global>
 			html {
 				font-family: "Montserrat", system-ui, sans-serif;
