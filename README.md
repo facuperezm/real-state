@@ -30,8 +30,10 @@ pnpm dev
 ## 🔑 Environment Variables
 
 ```bash
-CONTENTFUL_SPACE_ID=your_space_id
-CONTENTFUL_ACCESS_TOKEN=your_access_token
+CONTENTFUL_SPACE_ID=
+CONTENTFUL_DELIVERY_TOKEN=
+CONTENTFUL_PREVIEW_TOKEN=
+PUBLIC_GOOGLE_MAPS_API_KEY=
 ```
 
 ## 📦 Features
@@ -57,7 +59,7 @@ pnpm preview
 
 ## 📝 To Do
 
-- [ ] Fix clickable area in main page components
+- [x] Fix clickable area in main page components
 - [ ] Add property search functionality
 - [ ] Implement contact forms
 
