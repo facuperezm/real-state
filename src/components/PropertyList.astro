@@ -1,7 +1,6 @@
 ---
 import { api } from "@/lib/api"
 import Property from "@/components/Property.astro"
-import type { Photo } from "@/lib/types"
 
 const properties = await api.getPropertyList()
 ---
@@ -10,8 +9,8 @@ const properties = await api.getPropertyList()
 	{
 		properties.map((property) => {
 			const photos = property.photos
-				? (property.photos as Photo[]).map((photo) => photo.fields.file.url)
-				: ([] as Photo[])
+				? property.photos.map((photo: any) => photo?.fields?.file?.url || "").filter(Boolean)
+				: []
 
 			return (
 				<Property

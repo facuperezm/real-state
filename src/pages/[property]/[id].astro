@@ -2,7 +2,6 @@
 import "photoswipe/style.css"
 import Layout from "@/layouts/Layout.astro"
 import { api } from "@/lib/api"
-import type { Photo } from "@/lib/types"
 import Map from "@/components/map"
 
 const { id } = Astro.params
@@ -10,7 +9,14 @@ if (!id) {
 	throw new Error("No property ID provided")
 }
 const property = await api.getProperty(id)
-const propertyPhotos = (property as { photos: Photo[] }).photos as Photo[]
+const propertyPhotos =
+	property?.photos
+		?.map((photo: any) => ({
+			fields: {
+				file: { url: photo?.fields?.file?.url || "" },
+			},
+		}))
+		.filter((photo) => photo.fields.file.url) || []
 
 while (propertyPhotos.length < 5) {
 	const lastElement = propertyPhotos[propertyPhotos.length - 2]
@@ -27,19 +33,23 @@ while (propertyPhotos.length < 5) {
 			{property?.title}
 		</h1>
 		<section class="-mx-4">
-			<div class="flex max-w-full snap-x gap-4 overflow-auto md:hidden">
-				<img
-					src={`${propertyPhotos[0].fields.file.url}`}
-					alt=""
-					class="h-[250px] snap-start"
-					transition:name={`property-image-${id}`}
-				/>
+			<div
+				class="relative flex w-full snap-x snap-mandatory gap-0 overflow-x-auto scroll-smooth md:hidden"
+			>
 				{
-					propertyPhotos
-						.slice(1)
-						.map((propertyImg) => (
-							<img src={`${propertyImg.fields.file.url}`} alt="" class="h-[250px] snap-start" />
-						))
+					propertyPhotos.map((propertyImg, index) => (
+						<div class="relative w-full flex-none shrink-0">
+							<img
+								src={`${propertyImg.fields.file.url}`}
+								alt={`Foto ${index + 1} de ${property?.title}`}
+								class="h-[300px] w-full snap-center object-cover"
+								transition:name={index === 0 ? `property-image-${id}` : undefined}
+							/>
+							<div class="absolute bottom-4 right-4 rounded-full bg-black/60 px-3 py-1 text-sm text-white">
+								{index + 1}/{propertyPhotos.length}
+							</div>
+						</div>
+					))
 				}
 			</div>
 		</section>
@@ -56,8 +66,8 @@ while (propertyPhotos.length < 5) {
 							>
 								<img
 									src={`${propertyImg.fields.file.url}`}
-									alt=""
-									class="size-full object-cover"
+									alt={`Foto ${index + 1} de ${property?.title}`}
+									class="size-full object-cover transition-opacity hover:opacity-90"
 									transition:name={index === 0 ? `property-image-${id}` : undefined}
 								/>
 							</a>
